@@ -182,34 +182,19 @@ const Home = () => {
         </main>
 
         {/* SIDEBAR */}
-        <aside className={`fixed top-0 left-0 h-full w-80 bg-white dark:bg-slate-900 shadow-2xl transform transition-transform duration-500 z-[100] border-r dark:border-gray-800 ${open ? "translate-x-0" : "-translate-x-full"}`}>
+        <aside className={`fixed top-0 left-0 h-full w-80 bg-white dark:bg-slate-900 shadow-2xl transform transition-transform duration-500 z-50 border-r dark:border-gray-800 ${open ? "translate-x-0" : "-translate-x-full"}`}>
           <div className="p-8">
-            <div className="flex justify-between items-center mb-10">
-              <h2 className="text-3xl font-black italic text-gray-900 dark:text-white">Menu</h2>
-              <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-red-500 p-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-            </div>
-            
+            <div className="flex justify-between items-center mb-10"><h2 className="text-3xl font-black italic tracking-tighter text-gray-900 dark:text-white">Menu</h2>
+              <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-red-500 p-2 rounded-xl"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div>
             <div className="space-y-8">
-              <div>
-                <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-4 block">Pilih Tema</label>
+              <div><label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-4 block">Pilih Tema</label>
                 <div className="flex bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl gap-1">
-                  <button onClick={() => changeTheme('light')} className={`flex-1 py-3 rounded-xl font-bold ${currentTheme === 'light' ? 'bg-white text-emerald-600 shadow-sm' : 'text-gray-500'}`}>Light</button>
-                  <button onClick={() => changeTheme('dark')} className={`flex-1 py-3 rounded-xl font-bold ${currentTheme === 'dark' ? 'bg-slate-700 text-emerald-400 shadow-sm' : 'text-gray-500'}`}>Dark</button>
+                  <button onClick={() => changeTheme('light')} className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold ${currentTheme === 'light' ? 'bg-white text-emerald-600 shadow-md' : 'text-gray-500'}`}><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" /></svg><span>Light</span></button>
+                  <button onClick={() => changeTheme('dark')} className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold ${currentTheme === 'dark' ? 'bg-slate-700 text-emerald-400 shadow-md' : 'text-gray-500'}`}><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg><span>Dark</span></button>
                 </div>
               </div>
-
               <div className="pt-8 border-t dark:border-gray-800">
-                {/* Solusi Tombol Bookmark: Gunakan onClick + navigate */}
-                <button 
-                  onClick={() => {
-                    setOpen(false);
-                    navigate('/bookmark');
-                  }} 
-                  className="w-full flex items-center gap-4 p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-500/5 text-emerald-700 dark:text-emerald-400 font-bold hover:scale-[1.02] transition-transform"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>
-                  Bookmark Tersimpan
-                </button>
+                <Link to="/bookmark" onClick={() => setOpen(false)} className="flex items-center gap-4 p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-500/5 text-emerald-700 dark:text-emerald-400 font-bold hover:scale-[1.02] transition-transform"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>Bookmark Tersimpan</Link>
               </div>
             </div>
           </div>
