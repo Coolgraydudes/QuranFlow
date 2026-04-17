@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* Memaksa Tailwind v4 mendengarkan class .dark, bukan media query Chrome */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+}
+
+.dark {
+  --background: #0b1120;
+  --foreground: #f8fafc;
+}
