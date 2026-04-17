@@ -11,7 +11,7 @@
           {/* Routes: Container untuk semua Route */}
           <Routes>
             {/* Route: Menghubungkan URL dengan komponen */}
-            <Route path="/" element={<Home />} />
+            <Route index element={<Home />} />
             <Route path="/surat/:nomor" element={<Detail />} />
             {/* :nomor adalah parameter dinamis */}
             {/*Book mark */}

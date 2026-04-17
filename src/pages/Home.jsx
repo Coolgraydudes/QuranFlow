@@ -138,23 +138,45 @@ const Home = () => {
           {/* LIST SURAH */}
           <div className="lg:w-5/12 bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 rounded-[2.5rem] flex flex-col shadow-xl overflow-hidden">
             <div className="p-6 border-b border-gray-50 dark:border-gray-800">
-              <input type="text" placeholder="Cari Surah..." className="w-full p-4 bg-white dark:bg-slate-800 border rounded-2xl outline-none" onChange={(e) => dispatch(setSearchTerm(e.target.value))} />
+              <input 
+                type="text" 
+                placeholder="Cari Surah..." 
+                className="w-full p-4 bg-gray-50 dark:bg-slate-800 border-none rounded-2xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white" 
+                onChange={(e) => dispatch(setSearchTerm(e.target.value))} 
+              />
             </div>
-            <div className="flex-grow overflow-y-auto p-6 space-y-3">
-              {loading ? [...Array(6)].map((_, i) => <SkeletonCard key={i} />) : filteredSurah.map((surah) => (
-                  <Link to={`/surat/${surah.nomor}`} key={surah.nomor} className="block group p-4 bg-gray-50/50 dark:bg-gray-800/40 rounded-2xl hover:bg-emerald-50 transition-all">
+            <div className="flex-grow overflow-y-auto p-6 space-y-3 custom-scrollbar">
+              {loading ? (
+                [...Array(6)].map((_, i) => <SkeletonCard key={i} />)
+              ) : (
+                filteredSurah.map((surah) => (
+                  <Link 
+                    to={`/surat/${surah.nomor}`} 
+                    key={surah.nomor} 
+                    className="block group p-4 bg-gray-50/50 dark:bg-slate-800/40 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-500/10 transition-all border border-transparent hover:border-emerald-200 dark:hover:border-emerald-800"
+                  >
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-4">
-                        <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-white text-emerald-600 font-black">{surah.nomor}</span>
+                        {/* Box Nomor Surah - Sekarang berubah warna saat Dark Mode */}
+                        <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 font-black shadow-sm group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                          {surah.nomor}
+                        </span>
                         <div>
-                          <h3 className="font-bold group-hover:text-emerald-600">{surah.namaLatin}</h3>
-                          <p className="text-[11px] text-gray-500">{surah.arti} • {surah.jumlahAyat} Ayat</p>
+                          <h3 className="font-bold text-gray-800 dark:text-gray-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
+                            {surah.namaLatin}
+                          </h3>
+                          <p className="text-[11px] text-gray-500 dark:text-gray-400">
+                            {surah.arti} • {surah.jumlahAyat} Ayat
+                          </p>
                         </div>
                       </div>
-                      <h4 className="text-2xl font-serif font-bold text-emerald-700" dir="rtl">{surah.nama}</h4>
+                      <h4 className="text-2xl font-serif font-bold text-emerald-700 dark:text-emerald-300" dir="rtl">
+                        {surah.nama}
+                      </h4>
                     </div>
                   </Link>
-                ))}
+                ))
+              )}
             </div>
           </div>
         </main>
