@@ -162,7 +162,7 @@ const Detail = () => {
         <aside className={`fixed top-0 left-0 h-full w-80 bg-white dark:bg-slate-900 shadow-2xl transform transition-transform duration-500 z-50 border-r dark:border-gray-800 ${open ? "translate-x-0" : "-translate-x-full"}`}>
           <div className="p-8 h-full flex flex-col">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-black text-gray-900 dark:text-white">Settings</h2>
+              <h2 className="text-3xl font-black text-gray-900 dark:text-white">Menu</h2>
               <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-red-500 p-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
             </div>
             
