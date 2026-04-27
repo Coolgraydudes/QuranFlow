@@ -27,7 +27,6 @@ const Home = () => {
     { id: '06', nama: 'Yasser Al-Dosari' },
   ];
   
-  // Ambil pilihan qori dari localStorage, defaultnya '05' (Misyari Rasyid)
   const [selectedQori, setSelectedQori] = useState(localStorage.getItem("qori_id") || '05');
 
   const handleGoalChange = (e) => {
@@ -47,7 +46,6 @@ const Home = () => {
     }
   };
 
-  // Fungsi ganti Qori & simpan ke LocalStorage
   const changeQori = (id) => {
     setSelectedQori(id);
     localStorage.setItem("qori_id", id);
@@ -89,11 +87,12 @@ const Home = () => {
             <div className="flex-1 bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 rounded-[2.5rem] p-8 flex flex-col justify-center shadow-sm">
               {lastRead ? (
                 <Link to={`/surat/${lastRead.nomorSurah}`} className="group bg-slate-50 dark:bg-slate-800/50 p-6 rounded-[2rem] transition-all hover:ring-2 hover:ring-emerald-500/50">
-                   <div className="flex justify-between items-start mb-6">
-                      <h2 className="text-4xl md:text-5xl font-serif font-bold text-emerald-700 dark:text-emerald-300">{lastRead.nama}</h2>
+                    <div className="flex justify-between items-start mb-6">
+                      {/* Font diganti ke font-amiri */}
+                      <h2 className="text-4xl md:text-5xl font-amiri font-bold text-emerald-700 dark:text-emerald-300">{lastRead.nama}</h2>
                       <span className="bg-emerald-500 text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-widest">Terakhir Dibaca</span>
-                   </div>
-                   <div className="flex justify-between items-end">
+                    </div>
+                    <div className="flex justify-between items-end">
                       <div>
                         <h3 className="text-xl font-bold">{lastRead.nomorSurah}. {lastRead.namaSurah}</h3>
                         <p className="text-sm text-gray-500">Ayat ke-{lastRead.nomorAyat}</p>
@@ -102,7 +101,7 @@ const Home = () => {
                         <span>Lanjut Baca</span>
                         <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                       </div>
-                   </div>
+                    </div>
                 </Link>
               ) : (
                 <div className="opacity-40 flex flex-col items-center py-10">
@@ -156,7 +155,8 @@ const Home = () => {
                           <p className="text-[11px] text-gray-500 dark:text-gray-400">{surah.arti} • {surah.jumlahAyat} Ayat</p>
                         </div>
                       </div>
-                      <h4 className="text-2xl font-serif font-bold text-emerald-700 dark:text-emerald-300" dir="rtl">{surah.nama}</h4>
+                      {/* Font diganti ke font-amiri */}
+                      <h4 className="text-2xl font-amiri font-bold text-emerald-700 dark:text-emerald-300" dir="rtl">{surah.nama}</h4>
                     </div>
                   </Link>
                 ))}
@@ -164,7 +164,7 @@ const Home = () => {
           </div>
         </main>
 
-        {/* --- SIDEBAR MENU (Pilihan Tema & Qori) --- */}
+        {/* --- SIDEBAR MENU --- */}
         <aside className={`fixed top-0 left-0 h-full w-80 bg-white dark:bg-slate-900 shadow-2xl transform transition-transform duration-500 z-[100] border-r dark:border-gray-800 ${open ? "translate-x-0" : "-translate-x-full"}`}>
           <div className="p-8 h-full flex flex-col">
             <div className="flex justify-between items-center mb-8">
@@ -173,7 +173,6 @@ const Home = () => {
             </div>
             
             <div className="space-y-8 flex-1 overflow-y-auto pr-2 custom-scrollbar">
-              {/* Menu Tema */}
               <div>
                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4 block">Tampilan</label>
                 <div className="flex bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl gap-1">
@@ -182,7 +181,6 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Menu Pilih Qori (Sesuai 01-06 API kamu) */}
               <div>
                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4 block">Pilih Suara Qori</label>
                 <div className="grid gap-2">
@@ -218,7 +216,6 @@ const Home = () => {
 
         {open && <div onClick={() => setOpen(false)} className="fixed inset-0 bg-slate-900/40 z-[90] backdrop-blur-sm transition-opacity" />}
 
-        {/* Tombol Menu Bawah */}
         <button onClick={() => setOpen(true)} className="fixed bottom-8 right-8 bg-emerald-600 text-white w-14 h-14 flex items-center justify-center rounded-2xl shadow-xl z-30 hover:scale-110 active:scale-95 transition-all">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M20 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M10 13h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" /><path d="M17 13a4 4 0 1 1 -3.995 4.2l-.005 -.2l.005 -.2a4 4 0 0 1 3.995 -3.8z" /></svg>
         </button>

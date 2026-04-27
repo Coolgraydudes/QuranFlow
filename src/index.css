@@ -1,14 +1,16 @@
+/* BARIS 1: Harus paling atas */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* BARIS 2: Baru Tailwind */
 @import "tailwindcss";
 
-/* Memaksa Tailwind v4 mendengarkan class .dark, bukan media query Chrome */
 @custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-amiri: "Amiri", serif;
+}
 
 :root {
   --background: #ffffff;
   --foreground: #0f172a;
-}
-
-.dark {
-  --background: #0b1120;
-  --foreground: #f8fafc;
 }
